@@ -8,6 +8,14 @@ function makeRandomMove() {
 
   // exit if the game is over
   if (game.game_over()) return;
+  let captures = possibleMoves.filter ( (a) => {
+    return a.includes('x')
+  })
+
+  // prefer captures
+  if (captures.length > 0) {
+    possibleMoves = captures
+  }
 
   // choses a random index in the list
   var randomIdx = Math.floor(Math.random() * possibleMoves.length);
